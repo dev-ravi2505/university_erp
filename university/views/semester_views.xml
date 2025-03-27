@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="semester_info_tree_view" model="ir.ui.view">
+            <field name="name">semester_info_tree_view</field>
+            <field name="model">semester.info</field>
+            <field name="arch" type="xml">
+                <tree string="Semester Information">
+                    <field name="name"/>
+                </tree>
+            </field>
+        </record>
+        <record id="semester_info_form_view" model="ir.ui.view">
+            <field name="name">semester_info_form_view</field>
+            <field name="model">semester.info</field>
+            <field name="arch" type="xml">
+                <form string="Semester Information">
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="name"/>
+                                <field name="semester_number"/>
+                            </group>
+                            <group>
+                                <field name="department_info_id"/>
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        <record id="action_semester_info" model="ir.actions.act_window">
+            <field name="name">Semester Information</field>
+            <field name="res_model">semester.info</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p class="o_view_nocontent_smiling_face">
+                    Create a new Semester!
+                </p>
+            </field>
+        </record>
+
+        <menuitem id="semester_info_menu" name="Semester" sequence="2" action="action_semester_info"
+                  parent="course_info_menu_root"/>
+
+
+    </data>
+</odoo>

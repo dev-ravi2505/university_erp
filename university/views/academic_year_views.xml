@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="academic_year_info_tree_view" model="ir.ui.view">
+            <field name="name">academic_year_info_tree_view</field>
+            <field name="model">academic.year.info</field>
+            <field name="arch" type="xml">
+                <tree string="Academic Year Information">
+                    <field name="name"/>
+                </tree>
+            </field>
+        </record>
+        <record id="academic_year_info_form_view" model="ir.ui.view">
+            <field name="name">academic_year_info_form_view</field>
+            <field name="model">academic.year.info</field>
+            <field name="arch" type="xml">
+                <form string="Academic Year Information">
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="name"/>
+                                <field name="start_date"/>
+                            </group>
+                            <group>
+                                <field name="end_date"/>
+                                <field name="active_button"/>
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        <record id="action_academic_year_info" model="ir.actions.act_window">
+            <field name="name">Academic Year Information</field>
+            <field name="res_model">academic.year.info</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p class="o_view_nocontent_smiling_face">
+                    Create a new Academic Year!
+                </p>
+            </field>
+        </record>
+
+        <menuitem id="academic_year_info_menu" name="Academic Year" sequence="3" action="action_academic_year_info"
+                  parent="course_info_menu_root"/>
+
+
+    </data>
+</odoo>

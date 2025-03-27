@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="course_info_tree_view" model="ir.ui.view">
+            <field name="name">course_info_tree_view</field>
+            <field name="model">course.info</field>
+            <field name="arch" type="xml">
+                <tree string="Course Information">
+                    <field name="name"/>
+                </tree>
+            </field>
+        </record>
+        <record id="course_info_form_view" model="ir.ui.view">
+            <field name="name">course_info_form_view</field>
+            <field name="model">course.info</field>
+            <field name="arch" type="xml">
+                <form string="Student Information">
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="name"/>
+                                <field name="number_of_semester"/>
+                            </group>
+                            <group>
+                                <field name="course_category"/>
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        <record id="action_course_info" model="ir.actions.act_window">
+            <field name="name">Course Information</field>
+            <field name="res_model">course.info</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p class="o_view_nocontent_smiling_face">
+                    Create a new Course!
+                </p>
+            </field>
+        </record>
+
+        <menuitem id="course_info_menu_root" name="Course Management" sequence="0" parent="main_configuration_menu_root"/>
+        <menuitem id="course_info_menu" name="Course" sequence="1" action="action_course_info" parent="course_info_menu_root"/>
+
+
+    </data>
+</odoo>

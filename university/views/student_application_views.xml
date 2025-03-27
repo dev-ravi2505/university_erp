@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="student_application_info_form_view" model="ir.ui.view">
+            <field name="name">student_application_info_form_view</field>
+            <field name="model">student.application.info</field>
+            <field name="arch" type="xml">
+                <form string="Student Application Information">
+                    <header>
+                        <button name="send_for_verification" type="object" string="Send for Verification" invisible="state != 'draft'"/>
+                         <button name="action_approve" type="object" string="Approve" invisible="state != 'verify'"/>
+                        <button name="action_reject" type="object" string="Reject" invisible="state != 'verify'"/>
+                         <button name="action_create_student" type="object" string="Create Student" invisible="state != 'approved'"/>
+                        <field name="state" widget="statusbar"/>
+                    </header>
+                    <sheet>
+                        <div name="button_box" position="inside">
+                            <button class="oe_stat_button" type="object"
+                                    name="redirect_student_document"
+                                    icon="fa-star">
+                                <field string="Document" name="document_count" widget="statinfo"/>
+                            </button>
+                        </div>
+                        <field name="image" widget="image" class="oe_left oe_avatar"/>
+                        <div class="oe_title">
+                            <h2>
+                                <field name="application_number"/>
+                            </h2>
+                            <br/>
+                            <h3>
+                                <table>
+                                    <tr>
+                                        <td>
+                                            <field name="first_name" placeholder="First Name"/>
+                                        </td>
+                                        <td>
+                                            <field name="middle_name" placeholder="Middle Name"/>
+                                        </td>
+                                        <td>
+                                            <field name="last_name" placeholder="Last Name"/>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </h3>
+                        </div>
+                        <notebook>
+                            <page string="Admission Details" name="admission_details">
+                                <group>
+                                    <group>
+                                        <field name="academic_year_info_id"/>
+                                        <field name="date"/>
+                                        <field name="company_id"/>
+                                    </group>
+                                    <group>
+                                        <field name="course_info_id"/>
+                                        <field name="department_info_id"
+                                               domain="[('course_info_id', '=', course_info_id)]"/>
+                                        <field name="semester_info_id"
+                                               domain="[('department_info_id', '=', department_info_id)]"/>
+                                        <field name="batch_name"/>
+                                    </group>
+                                </group>
+                            </page>
+                            <page string="Personal Details" name="personal_details">
+                                <group string="Personal Details">
+                                    <group>
+                                        <field name="dob"/>
+                                        <field name="gender"/>
+                                        <field name="father_name"/>
+                                        <field name="mother_name"/>
+                                        <field name="guardian_name"/>
+                                    </group>
+                                    <group>
+                                        <field name="blood_group"/>
+                                        <field name="nationality"/>
+                                        <field name="mother_tongue"/>
+                                        <field name="religion"/>
+                                        <field name="cast"/>
+                                    </group>
+                                </group>
+                                <group string="CONTACT DETAILS">
+                                    <group>
+                                        <field name="email_name"/>
+                                    </group>
+                                    <group>
+                                        <field name="mobile_number"/>
+                                        <field name="phone_number"/>
+                                    </group>
+                                </group>
+                                <group string="CONTACT ADDRESS">
+                                    <group>
+                                        <label for="street" string="Address"/>
+                                        <div class="o_address_format">
+                                            <field name="street" placeholder="Street..." class="o_address_street"/>
+                                            <field name="street2" placeholder="Street 2..."
+                                                   class="o_address_street"/>
+                                            <field name="city" placeholder="City" class="o_address_city"/>
+                                            <field name="state_id" class="o_address_state" placeholder="State"
+                                                   options="{'no_open': True, 'no_quick_create': True}"
+                                                   context="{'default_country_id': country_id}"/>
+                                            <field name="zip" placeholder="ZIP" class="o_address_zip"/>
+                                            <field name="country_id" placeholder="Country" class="o_address_country"
+                                                   options='{"no_open": True, "no_create": True}'/>
+                                        </div>
+                                        <field name="is_same_as_permanent_address"/>
+                                    </group>
+                                    <group invisible="is_same_as_permanent_address != False">
+                                        <label for="current_street" string="Current Address"/>
+                                        <div class="o_address_format">
+                                            <field name="current_street" placeholder="Street..."
+                                                   class="o_address_street"/>
+                                            <field name="current_street2" placeholder="Street 2..."
+                                                   class="o_address_street"/>
+                                            <field name="current_city" placeholder="City" class="o_address_city"/>
+                                            <field name="current_state_id" class="o_address_state" placeholder="State"
+                                                   options="{'no_open': True, 'no_quick_create': True}"
+                                                   context="{'default_country_id': country_id}"/>
+                                            <field name="current_zip" placeholder="ZIP" class="o_address_zip"/>
+                                            <field name="current_country_id" placeholder="Country"
+                                                   class="o_address_country"
+                                                   options='{"no_open": True, "no_create": True}'/>
+                                        </div>
+                                    </group>
+                                </group>
+                            </page>
+                        </notebook>
+                    </sheet>
+                    <div class="oe_chatter">
+                        <field name="message_follower_ids"/>
+                        <field name="message_ids"/>
+                    </div>
+                </form>
+            </field>
+        </record>
+
+        <record id="student_application_info_tree_view" model="ir.ui.view">
+            <field name="name">student_application_info_tree_view</field>
+            <field name="model">student.application.info</field>
+            <field name="arch" type="xml">
+                <tree string="Student Application Information">
+                    <field name="application_number"/>
+                    <field name="first_name"/>
+                    <field name="last_name" optional="hide"/>
+                    <field name="gender"/>
+                    <field name="dob"/>
+                    <field name="email_name"/>
+                    <field name="mobile_number"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="action_student_application_info" model="ir.actions.act_window">
+            <field name="name">Student Application Information</field>
+            <field name="res_model">student.application.info</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p class="o_view_nocontent_smiling_face">
+                    Create a new Admission!
+                </p>
+            </field>
+        </record>
+
+        <menuitem id="application_info_menu" name="Application" sequence="1" action="action_student_application_info"
+                  parent="main_admission_info_menu"/>
+    </data>
+</odoo>

@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="department_info_tree_view" model="ir.ui.view">
+            <field name="name">department_info_tree_view</field>
+            <field name="model">department.info</field>
+            <field name="arch" type="xml">
+                <tree string="department Information">
+                    <field name="name"/>
+                </tree>
+            </field>
+        </record>
+        <record id="department_info_form_view" model="ir.ui.view">
+            <field name="name">department_info_form_view</field>
+            <field name="model">department.info</field>
+            <field name="arch" type="xml">
+                <form string="Department Information">
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="name"/>
+                                <field name="course_info_id"/>
+                            </group>
+                            <group>
+                                <field name="course_code"/>
+                            </group>
+                        </group>
+                         <notebook>
+                            <page id="semester_info" name="semester_info" string="Semester" invisible="1">
+                                 <field name="semester_info_ids">
+                                    <tree editable="bottom" string="Semester">
+                                        <field name="name"/>
+                                        <field name="semester_number"/>
+                                    </tree>
+                                 </field>
+                            </page>
+                    </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        <record id="action_department_info" model="ir.actions.act_window">
+            <field name="name">Department Information</field>
+            <field name="res_model">department.info</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p class="o_view_nocontent_smiling_face">
+                    Create a new Department!
+                </p>
+            </field>
+        </record>
+
+        <menuitem id="department_info_menu" name="Department" sequence="2" action="action_department_info"
+                  parent="course_info_menu_root"/>
+
+
+    </data>
+</odoo>

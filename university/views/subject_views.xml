@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="subject_info_tree_view" model="ir.ui.view">
+            <field name="name">subject_info_tree_view</field>
+            <field name="model">subject.info</field>
+            <field name="arch" type="xml">
+                <tree string="Subject Information">
+                    <field name="sub_name"/>
+                    <field name="code"/>
+                </tree>
+            </field>
+        </record>
+        <record id="subject_info_form_view" model="ir.ui.view">
+            <field name="name">subject_info_form_view</field>
+            <field name="model">subject.info</field>
+            <field name="arch" type="xml">
+                <form string="Subject Information">
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="code"/>
+                                <field name="type"/>
+                                <field name="language"/>
+                                <field name="description" placeholder="TTTTTTTTTTT"/>
+                            </group>
+                            <group>
+                                <field name="sub_name"/>
+                                <field name="weightage"/>
+                                <field name="lab"/>
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        <record id="action_subject_info" model="ir.actions.act_window">
+            <field name="name">Subject Information</field>
+            <field name="res_model">subject.info</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p class="o_view_nocontent_smiling_face">
+                    Create a new Subject!
+                </p>
+            </field>
+        </record>
+
+        <menuitem id="subject_info_menu_root" name="Subject Management" sequence="1" parent="main_configuration_menu_root"/>
+        <menuitem id="subject_info_menu" name="Subject" sequence="1" action="action_subject_info" parent="subject_info_menu_root"/>
+
+
+    </data>
+</odoo>
