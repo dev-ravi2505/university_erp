@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
     <data>
-        <menuitem id="university_menu_root" name="University" sequence="1"/>
+        <menuitem id="university_menu_root" name="University" sequence="1" web_icon="university,static/src/img/university.png"/>
         <menuitem id="main_admission_info_menu" name="Admission" sequence="5" parent="university_menu_root"/>
         <menuitem id="main_configuration_menu_root" name="Configuration" parent="university_menu_root" sequence="99"/>
     </data>

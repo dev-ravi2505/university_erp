@@ -83,18 +83,6 @@ class StudentApplicationInfo(models.Model):
     image = fields.Image("Image")
     document_count = fields.Integer(compute='_compute_document_count')
 
-    # def send_for_verification(self):
-    #     for rec in self:
-    #         document_id = self.env['document.info'].search([('student_application_info_id', '=', rec.id)])
-    #         if not document_id:
-    #             raise ValidationError(_('No document found.'))
-    #         if document_id:
-    #             for document in document_id:
-    #                 if document.state == 'draft':
-    #                     raise ValidationError(_('No document found.'))
-    #                 else:
-    #                     rec.write({'state': 'verify'})
-
     def action_reject(self):
         """Method to set application state as 'Rejected'"""
         for rec in self:
@@ -116,10 +104,6 @@ class StudentApplicationInfo(models.Model):
             if not document_id:
                 raise ValidationError(_('No Document Found.'))
             else:
-                # for document in document_id:
-                # if not (document.state == "done"):
-                #   raise ValidationError('Document are not verified yet!!!')
-                # else:
                 rec.write({'state': 'verify'})
 
     def _compute_document_count(self):
@@ -127,11 +111,6 @@ class StudentApplicationInfo(models.Model):
             record.document_count = self.env['document.info'].search_count(
                 [('student_application_info_id', '=', record.id)]
             )
-
-    # def _compute_document_count(self):
-    #   for record in self:
-    #      record.document_count = len(
-    #         self.env['document.info'].search([('student_application_info_id', '=', record.id)]))
 
     def redirect_student_document(self):
         return {

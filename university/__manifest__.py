@@ -4,11 +4,9 @@
     'name': 'University',
     'version': '17.0.0.1',
     'summary': 'ERP Module for University Management',
-    'category': '',
+    'category': 'Custom/University Management',
     'author': 'Ravi Prajapati',
     'license': 'LGPL-3',
-    'company': '',
-    'website': '',
 
     # Dependencies
     'depends': ['mail', 'base', 'hr'],
@@ -33,7 +31,6 @@
 
     # Images
     'images': [
-
     ],
 
     # Technical
