@@ -8,3 +8,5 @@ access_document_info,document_info,model_document_info,,1,1,1,1
 access_student_info,student_info,model_student_info,,1,1,1,1
 access_faculty_info,faculty_info,model_faculty_info,,1,1,1,1
 access_subject_info,subject_info,model_subject_info,,1,1,1,1
+access_batch_info,batch_info,model_batch_info,,1,1,1,1
+access_attendance_info,attendance_info,model_attendance_info,,1,1,1,1

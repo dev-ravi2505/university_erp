@@ -57,7 +57,7 @@
                                                domain="[('course_info_id', '=', course_info_id)]"/>
                                         <field name="semester_info_id"
                                                domain="[('department_info_id', '=', department_info_id)]"/>
-                                        <field name="batch_name"/>
+                                        <field name="batch_info_id"/>
                                     </group>
                                 </group>
                             </page>

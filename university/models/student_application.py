@@ -21,7 +21,7 @@ class StudentApplicationInfo(models.Model):
     course_info_id = fields.Many2one('course.info', string='Course', required=True, track_visibility='onchange')
     department_info_id = fields.Many2one('department.info', string='Department', required=True)
     semester_info_id = fields.Many2one('semester.info', string='Semester', required=True)
-    batch_name = fields.Char(string='Batch', track_visibility='onchange')
+    batch_info_id = fields.Many2one('batch.info', string='Batch', required=True)
 
     state = fields.Selection([
         ('draft', 'Draft'),

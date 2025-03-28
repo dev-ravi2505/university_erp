@@ -27,6 +27,8 @@
         'views/student_info_views.xml',
         'views/faculty_info_views.xml',
         'views/subject_views.xml',
+        'views/batch_views.xml',
+        'views/attendance_views.xml',
     ],
 
     # Images

@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="batch_info_tree_view" model="ir.ui.view">
+            <field name="name">batch_info_tree_view</field>
+            <field name="model">batch.info</field>
+            <field name="arch" type="xml">
+                <tree string="Batch Information">
+                    <field name="name"/>
+                    <field name="academic_year_info_id"/>
+                    <field name="batch_strength"/>
+                    <field name="semester_info_id"/>
+                </tree>
+            </field>
+        </record>
+        <record id="batch_info_form_view" model="ir.ui.view">
+            <field name="name">batch_info_form_view</field>
+            <field name="model">batch.info</field>
+            <field name="arch" type="xml">
+                <form string="Batch Information">
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="name"/>
+                                <field name="batch_strength"/>
+                                <field name="semester_info_id"/>
+                            </group>
+                            <group>
+                                <field name="academic_year_info_id"/>
+                                <field name="faculty_info_id"/>
+                                <field name="department_info_id"/>
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        <record id="action_batch_info" model="ir.actions.act_window">
+            <field name="name">Batch Information</field>
+            <field name="res_model">batch.info</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p class="o_view_nocontent_smiling_face">
+                    Create a new Batch!
+                </p>
+            </field>
+        </record>
+
+        <menuitem id="batch_info_menu" name="Batch" sequence="4" action="action_batch_info"
+                  parent="main_admission_info_menu"/>
+    </data>
+</odoo>

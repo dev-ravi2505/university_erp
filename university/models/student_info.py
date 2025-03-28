@@ -13,7 +13,7 @@ class StudentInfo(models.Model):
     first_name = fields.Char(string='First Name', required=True)
     middle_name = fields.Char(string='Middle Name')
     last_name = fields.Char(string='Last Name', required=True)
-    batch_name = fields.Char(string='Batch', store=True, readonly=False)
+    batch_info_id = fields.Many2one('batch.info', string='Batch', required=True)
     semester_info_id = fields.Many2one('semester.info', string='Semester', required=True)
     department_info_id = fields.Many2one('department.info', string='Department', required=True)
     course_info_id = fields.Many2one('course.info', string='Course', required=True, track_visibility='onchange')
@@ -70,3 +70,22 @@ class StudentInfo(models.Model):
     current_country_id = fields.Many2one('res.country', string='Country', ondelete='restrict')
 
     image = fields.Image("Image")
+
+    attendance_count = fields.Integer(compute='_compute_attendance_count')
+
+    def _compute_attendance_count(self):
+        for record in self:
+            record.attendance_count = self.env['attendance.info'].search_count(
+                [('student_info_id', '=', record.id)]
+            )
+
+    def redirect_student_attendance(self):
+        return {
+            'name': 'Attendance',
+            'view_mode': 'tree,form',
+            'res_model': 'attendance.info',
+            'domain': [('student_info_id', '=', self.id)],
+            'view_id': False,
+            'type': 'ir.actions.act_window',
+            'context': {'default_student_info_id': self.id}
+        }

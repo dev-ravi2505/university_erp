@@ -8,3 +8,5 @@ from . import document
 from . import student_info
 from . import faculty_info
 from . import subject
+from . import batch
+from . import attendance
